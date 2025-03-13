@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head th:replace="~{layout/layout :: head (pageTitle='Home')}">
+</head>
+<body>
+<div th:replace="~{layout/layout :: header}"></div>
+
+<div class="container-md mt-5 p-2">
+    <div class="mb-1">
+        <h1 class="display-4 font-weight-bolds">Welcome to Finance Tier!</h1>
+    </div>
+
+    <div class="container" th:if="${session.name} != null">
+        <div class="row row-cols-auto">
+            <div class="col">
+                <div>
+                    <h2 class="panel-title mb-3">Hi, <span th:text="${session.name}"></span> <span th:text="${session.lastName}"></span>!</h2>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <span class="align-middle">your personal finance space.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-5">Explore ou services:</h2>
+    <div class="row">
+        <div class="col m-1">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/goals.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Goals and Simulations</h5>
+                    <p class="card-text">Set goals and simulate scenarios to plan for the future. This section allows you to create clear objectives and visualize outcomes.</p>
+                    <a th:href="@{/simulations}" class="btn btn-dark">Check out!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/card.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Transactions Track</h5>
+                    <p class="card-text">Easily track all transactions. View transaction history, analyze trends, and stay up-to-date with real-time financial reports.</p>
+                    <a th:href="@{/transactions}" class="btn btn-dark">Check out!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/reports.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Build Reports</h5>
+                    <p class="card-text">Generate comprehensive, custom reports. Turn raw data into valuable insights to support informed and strategic decision-making.</p>
+                    <a th:href="@{/reports}" class="btn btn-dark">Check out!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/layout :: footer}"></div>
+</body>
+</html>

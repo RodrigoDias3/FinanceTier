@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{layout/layout :: head (pageTitle='Simulations')}">
+</head>
+<body>
+<div th:replace="~{layout/layout :: header}"></div>
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Withholding Table: Mainland Portugal</h5>
+            <p class="mb-0">Situation: Single without dependents or married with two earners</p>
+        </div>
+
+        <div class="p-4">
+            <div class="container-md row">
+                <div class="col m-3">
+                    <label for="salarioInput" class="form-label">Enter your gross monthly salary:</label>
+                    <input type="number" id="salarioInput" class="form-control" placeholder="E.g.: 2000" step="0.01">
+                    <button class="btn btn-dark mt-3" onclick="calcularRetencao()">Calculate Withholding</button>
+
+                    <div id="salrioBruto" class="mt-4">
+                        <p><strong>Taxable Income:</strong> €<span id="salario"></span></p>
+                        <p><strong>Meal Allowance (€9.6 daily):</strong> <span id="alimentacao"></span></p>
+                        <p style="color: cornflowerblue"><strong>Gross Salary:</strong> <span id="sbruto">€</span></p>
+                    </div>
+
+                    <div id="resultados" class="mt-4">
+                        <p><strong>Monthly Withholding Rate:</strong> <span id="taxaMensal">-</span></p>
+                        <p><strong>Monthly Withholding Amount:</strong> -<span id="valorMensal"></span>€</p>
+                        <p><strong>Social Security Contribution (11%):</strong> -<span id="ss"></span>€</p>
+                    </div>
+
+                    <div id="salrioLiquido" class="mt-4">
+                        <p style="color: lightseagreen"><strong>Net Income:</strong> <span id="sliquido"></span>€</p>
+                        <p style="color: cornflowerblue"><strong>Meal Allowance (€9.6 daily):</strong> <span id="alimentacaol"></span></p>
+                        <p style="color: royalblue"><strong>Total:</strong> <span id="total"></span>€</p>
+                    </div>
+                </div>
+                <div class="col m-3">
+                    <h5>According to the entered values, this is the breakdown of your salary:</h5>
+                    <canvas style="max-height: 300px; margin-top: 100px" id="doughnut"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center mb-0">
+                <thead class="table-light">
+                <tr>
+                    <th>Monthly Salary €</th>
+                    <th>Max. Marg. Rate</th>
+                    <th>Deduction Amount (€)</th>
+                    <th>Effective Monthly Withholding Rate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>up to 820.00€</td><td>0.00%</td><td>0.00€</td><td>0.00%</td></tr>
+                <tr><td>up to 935.00€</td><td>0.00%</td><td>0.00€</td><td>0.00%</td></tr>
+                <tr><td>up to 989.00€</td><td>0.00%</td><td>0.00€</td><td>0.00%</td></tr>
+                <tr><td>up to 1,125.00€</td><td>0.00%</td><td>0.00€</td><td>0.00%</td></tr>
+                <tr><td>up to 1,175.00€</td><td>0.00%</td><td>0.00€</td><td>0.00%</td></tr>
+                <tr><td>up to 1,769.00€</td><td>3.75%</td><td>44.07€</td><td>1.30%</td></tr>
+                <tr><td>up to 2,057.00€</td><td>8.00%</td><td>119.25€</td><td>2.20%</td></tr>
+                <tr><td>up to 2,408.00€</td><td>10.65%</td><td>173.76€</td><td>3.40%</td></tr>
+                <tr><td>up to 3,201.00€</td><td>19.36%</td><td>383.44€</td><td>6.57%</td></tr>
+                <tr><td>up to 5,492.00€</td><td>40.05%</td><td>1,045.80€</td><td>21.00%</td></tr>
+                <tr><td>up to 20,021.00€</td><td>44.95%</td><td>1,314.64€</td><td>38.40%</td></tr>
+                <tr><td>more than 20,021.00€</td><td>47.17%</td><td>1,760.10€</td><td>n.a.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+<script src="/scripts/juros.js"></script>
+
+<div th:replace="~{layout/layout :: footer}"></div>
+</body>
+</html>
